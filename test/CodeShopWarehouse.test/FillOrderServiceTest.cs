@@ -23,7 +23,7 @@ namespace CodeShopWarehouse.test
                     Processed = false,
                     ProductId = 1,
                     Stock = 1,
-                    CreatedDate = DateTimeOffset.Now
+                    CreatedDate = DateTime.Now
                 },
                 new FillOrder()
                 {
@@ -32,7 +32,7 @@ namespace CodeShopWarehouse.test
                     Processed = false,
                     ProductId = 1,
                     Stock = 1,
-                    CreatedDate = DateTimeOffset.Now
+                    CreatedDate = DateTime.Now
                 },
                 new FillOrder()
                 {
@@ -41,7 +41,7 @@ namespace CodeShopWarehouse.test
                     Processed = false,
                     ProductId = 1,
                     Stock = 1,
-                    CreatedDate = DateTimeOffset.Now
+                    CreatedDate = DateTime.Now
                 }
             };
             var mockFillOrderRepo = Substitute.For<IFillOrderRepo>();
@@ -69,7 +69,7 @@ namespace CodeShopWarehouse.test
         public void Unresolved_FillOrder_CanBe_Processed()
         {
             int fillOrderId = 1;
-            FillOrder testFillOrder = new FillOrder() { Id = fillOrderId, ProductId = 1, Processed = false, CreatedDate = DateTimeOffset.Now, ProcessDate = null, Stock = 1 };
+            FillOrder testFillOrder = new FillOrder() { Id = fillOrderId, ProductId = 1, Processed = false, CreatedDate = DateTime.Now, ProcessDate = null, Stock = 1 };
             var mockFillOrderRepo = Substitute.For<IFillOrderRepo>();
             mockFillOrderRepo.GetFillOrderById(fillOrderId).Returns(testFillOrder);
             FillOrderService fillOrderService = new FillOrderService(mockFillOrderRepo);
@@ -90,7 +90,7 @@ namespace CodeShopWarehouse.test
         public void Processed_FillOrder_CannontBe_Modified()
         {
             int fillOrderId = 1;
-            FillOrder testFillOrder = new FillOrder() { Id = fillOrderId, ProductId = 1, Processed = true, CreatedDate = DateTimeOffset.Now, ProcessDate = DateTimeOffset.Now, Stock = 1 };
+            FillOrder testFillOrder = new FillOrder() { Id = fillOrderId, ProductId = 1, Processed = true, CreatedDate = DateTime.Now, ProcessDate = DateTime.Now, Stock = 1 };
             var mockFillOrderRepo = Substitute.For<IFillOrderRepo>();
             mockFillOrderRepo.GetFillOrderById(fillOrderId).Returns(testFillOrder);
             FillOrderService fillOrderService = new FillOrderService(mockFillOrderRepo);
